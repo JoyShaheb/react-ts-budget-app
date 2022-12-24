@@ -1,0 +1,14 @@
+body{
+  min-height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.App{
+  position: relative;
+  border: 2px solid gray;
+  height: 600px;
+  width: 320px;
+  border-radius: 5px;
+  padding: 20px;
+}

@@ -1,0 +1,15 @@
+@use '../../SCSS/mixins' as *;
+@use '../../SCSS/variables' as *;
+
+.BottomNavComponent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 30px 0;
+  width: 100%;
+  height: 50px;
+  background: $Green-color;
+  border-radius: 0 0 3px 3px;
+
+  @include flexbox(row, space-evenly, center, 10px)
+}
