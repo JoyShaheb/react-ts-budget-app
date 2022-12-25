@@ -3,7 +3,7 @@ import React, { FC } from "react";
 
 interface iTransactionCard {
   label: string;
-  transID: string;
+  id: string;
   date: string;
   amount: number;
 }
@@ -12,7 +12,7 @@ const TransactionCard: FC<iTransactionCard> = ({
   amount,
   date,
   label,
-  transID,
+  id,
 }) => {
   return (
     <Stack direction="column">
@@ -24,7 +24,7 @@ const TransactionCard: FC<iTransactionCard> = ({
       </Stack>
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Typography color="text.secondary" variant="caption">
-          Trans ID : {transID}
+          Trans ID : {id}
         </Typography>
         <Typography>$ {amount}</Typography>
       </Stack>
