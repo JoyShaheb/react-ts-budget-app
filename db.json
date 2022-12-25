@@ -1,6 +1,21 @@
 {
   "transactions": [
-    
+    {
+      "id": "DTy1-rBBdB",
+      "reason": "make payment",
+      "label": "make payment",
+      "date": "09:10 pm 23/12/22",
+      "amount": -111,
+      "color": "red"
+    },
+    {
+      "id": "YldgKWRrsT",
+      "reason": "make payment",
+      "label": "Income",
+      "amount": 12312,
+      "date": "02:28 AM 12/26/22",
+      "color": "green"
+    }
   ],
   "users": []
 }
