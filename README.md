@@ -1,3 +1,9 @@
+# React Budget App
+
+* [LIVE Preview 🚀]()
+
+![React Budget App](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/lio9a0l4i9hpw01e6b92.png)
+
 # setup
 
 * npm install @mui/material @emotion/react @emotion/styled @mui/icons-material

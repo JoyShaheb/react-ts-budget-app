@@ -52,6 +52,7 @@ const BaseModal: FC<iBaseModal> = ({
           e.preventDefault();
           if (onSubmit) onSubmit();
         }}
+        role="form"
       >
         <Stack sx={style}>
           <Typography variant="h5" mb={1.8}>
@@ -71,7 +72,7 @@ const BaseModal: FC<iBaseModal> = ({
             )}
             {onSave && (
               <Button type="submit" onClick={onSave}>
-                {isLoading ? "Saving..." : "Save"}
+                {isLoading ? "Proceeding..." : "Proceed"}
               </Button>
             )}
           </Stack>

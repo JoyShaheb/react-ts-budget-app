@@ -1,22 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState, FC } from "react";
 import { Stack, Typography, Button } from "@mui/material";
 import { v4 as uuidv4 } from "uuid";
 import TransactionCard from "./TransactionCard/TransactionCard";
 import BaseModal from "../Modal/BaseModal";
-import { useGetTransactionsQuery } from "../../store";
 import TransactionCardSkeleton from "./TransactionCard/TransactionCardSkeleton";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import { iTransaction } from "../../types";
+import EmptyHistory from "../EmptyHistory/EmptyHistory";
 
-const Transaction = () => {
-  // @ts-ignore
-  const { data, error, isLoading } = useGetTransactionsQuery();
+interface iTransactionProps {
+  data: iTransaction[];
+  error: any;
+  isLoading: boolean;
+}
+
+const Transaction: FC<iTransactionProps> = ({ data, error, isLoading }) => {
   const [modalState, setModalState] = useState<boolean>(false);
 
   return (
     <Stack>
-      {isLoading || error ? (
-        ""
-      ) : (
+      {!isLoading && !error && data?.length !== 0 && (
         <Stack
           direction="row"
           alignItems="center"
@@ -38,31 +41,42 @@ const Transaction = () => {
           >
             <div className="sdc">
               {isLoading &&
+                !error &&
                 Array(3)
                   .fill(0)
                   .map((_, index) => (
                     <TransactionCardSkeleton key={uuidv4()} />
                   ))}
               {error && <ErrorPage />}
-              {!isLoading && Array?.from(data)?.reverse()?.map((transaction: any) => (
-                <TransactionCard {...transaction} key={uuidv4()} />
-              ))}
+              {!isLoading &&
+                !error &&
+                Array?.from(data)
+                  ?.reverse()
+                  ?.map((transaction: any) => (
+                    <TransactionCard {...transaction} key={uuidv4()} />
+                  ))}
             </div>
           </BaseModal>
         </Stack>
       )}
-      <>
-        {isLoading &&
-          Array(3)
-            .fill(0)
-            .map((_, index) => <TransactionCardSkeleton key={uuidv4()} />)}
+      {isLoading &&
+        !error &&
+        Array(3)
+          .fill(0)
+          .map((_, index) => <TransactionCardSkeleton key={uuidv4()} />)}
 
-        {error && <ErrorPage />}
+      {error && <ErrorPage />}
 
-        {!isLoading && Array?.from(data)?.reverse()?.filter((item: any, index: number) => index < 5)?.map((transaction: any) => (
-          <TransactionCard {...transaction} key={uuidv4()} />
-        ))}
-      </>
+      {!isLoading &&
+        !error &&
+        Array?.from(data)
+          ?.reverse()
+          ?.filter((item: any, index: number) => index < 5)
+          ?.map((transaction: any) => (
+            <TransactionCard {...transaction} key={uuidv4()} />
+          ))}
+
+      {!isLoading && !error && data?.length === 0 && <EmptyHistory />}
     </Stack>
   );
 };

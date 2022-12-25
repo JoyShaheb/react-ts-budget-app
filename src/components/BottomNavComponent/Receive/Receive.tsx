@@ -42,7 +42,7 @@ const Receive = () => {
           label: watch("label"),
           amount: +watch("amount"),
           date: dayjs().format("hh:mm A MM/DD/YY"),
-          color: "red",
+          color: "green",
         })
           .unwrap()
           .catch(() => setModalState(true))

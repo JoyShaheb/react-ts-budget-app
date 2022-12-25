@@ -1,18 +1,13 @@
 import { Divider, Stack, Typography } from "@mui/material";
-import React, { FC } from "react";
+import { FC } from "react";
+import { iTransaction } from "../../../types";
 
-interface iTransactionCard {
-  label: string;
-  id: string;
-  date: string;
-  amount: number;
-}
-
-const TransactionCard: FC<iTransactionCard> = ({
+const TransactionCard: FC<iTransaction> = ({
   amount,
   date,
   label,
   id,
+  color
 }) => {
   return (
     <Stack direction="column">
@@ -26,7 +21,7 @@ const TransactionCard: FC<iTransactionCard> = ({
         <Typography color="text.secondary" variant="caption">
           Trans ID : {id}
         </Typography>
-        <Typography>$ {amount}</Typography>
+        <Typography className={color}>$ {amount}</Typography>
       </Stack>
       <Divider sx={{ my: 0.7 }} />
     </Stack>
