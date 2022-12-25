@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Stack, Typography, Button } from "@mui/material";
 import { v4 as uuidv4 } from "uuid";
 import TransactionCard from "./TransactionCard/TransactionCard";
 import BaseModal from "../Modal/BaseModal";
 import { useGetTransactionsQuery } from "../../store";
-import { iTransaction } from "../../types";
 import TransactionCardSkeleton from "./TransactionCard/TransactionCardSkeleton";
 import ErrorPage from "../ErrorPage/ErrorPage";
 
@@ -45,7 +44,7 @@ const Transaction = () => {
                     <TransactionCardSkeleton key={uuidv4()} />
                   ))}
               {error && <ErrorPage />}
-              {data?.map((transaction: iTransaction) => (
+              {!isLoading && Array?.from(data)?.reverse()?.map((transaction: any) => (
                 <TransactionCard {...transaction} key={uuidv4()} />
               ))}
             </div>
@@ -60,7 +59,7 @@ const Transaction = () => {
 
         {error && <ErrorPage />}
 
-        {data?.map((transaction: iTransaction) => (
+        {!isLoading && Array?.from(data)?.reverse()?.filter((item: any, index: number) => index < 5)?.map((transaction: any) => (
           <TransactionCard {...transaction} key={uuidv4()} />
         ))}
       </>

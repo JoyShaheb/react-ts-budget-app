@@ -1,16 +1,16 @@
-import React, { FC } from "react";
+import React, { Dispatch, FC, SetStateAction, FormEvent } from "react";
 import { Button, Modal, Stack, Typography } from "@mui/material";
 
 interface iBaseModal {
   title: string;
   children: React.ReactElement;
-  label?: string | JSX.Element | JSX.Element[];
+  label: string | JSX.Element | JSX.Element[];
   onSave?: () => void;
   onClose?: () => void;
   isLoading?: boolean;
-  state?: boolean;
-  setState?: any;
-  onSubmit?: any;
+  state: boolean;
+  setState: Dispatch<SetStateAction<boolean>>;
+  onSubmit?: () => void;
 }
 
 const BaseModal: FC<iBaseModal> = ({
@@ -43,15 +43,14 @@ const BaseModal: FC<iBaseModal> = ({
     <>
       <div onClick={handleOpen}>{label}</div>
       <Modal
-        // @ts-ignore
         open={state}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         component="form"
-        onSubmit={(e) => {
+        onSubmit={(e: FormEvent) => {
           e.preventDefault();
-          onSubmit();
+          if (onSubmit) onSubmit();
         }}
       >
         <Stack sx={style}>
