@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Stack, Typography, Button } from "@mui/material";
 import { v4 as uuidv4 } from "uuid";
 import TransactionCard from "./TransactionCard/TransactionCard";
@@ -12,6 +12,7 @@ const Transaction = () => {
   // @ts-ignore
   const { data, error, isLoading } = useGetTransactionsQuery();
   const [modalState, setModalState] = useState<boolean>(false);
+
   return (
     <Stack>
       {isLoading || error ? (
