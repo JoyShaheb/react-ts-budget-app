@@ -12,3 +12,7 @@
 * npm install @reduxjs/toolkit axios react-redux
 * npm i --save-dev @types/uuid uuid
 * npm install react-hook-form
+
+## issues to fix
+* needs a backend & mongodb to store all the data. currently json-server is used as backend 
+* write unit tests
